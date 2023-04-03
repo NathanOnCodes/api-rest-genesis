@@ -5,7 +5,7 @@ API Rest que realiza conversão de moedas utilizando Go, Fiber, GORM, Docker e M
 ## Requisitos
 
 - Docker
-- Docker Compose
+- Docker-compose
 
 ## Como executar
 
