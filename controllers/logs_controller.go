@@ -2,13 +2,13 @@ package controller
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/NathanCavalcanteFerreira/api-rest-genesis/db"
+	"github.com/NathanCavalcanteFerreira/api-rest-genesis/config"
 	"github.com/NathanCavalcanteFerreira/api-rest-genesis/models"
 )
 
 func GetConversions(c *fiber.Ctx) error{
 	var conversions []models.Conversion
-	result := db.DB.Find(&conversions)
+	result := db.UseDatabase.Find(&conversions)
 	
 	if result.Error != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{

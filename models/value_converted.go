@@ -1,7 +1,7 @@
 package models
 
 import (
-	"github.com/NathanCavalcanteFerreira/api-rest-genesis/db"
+	"github.com/NathanCavalcanteFerreira/api-rest-genesis/config"
 	"gorm.io/gorm"
 )
 
@@ -17,11 +17,11 @@ func PopulateConversion(value float64, symbol string) {
 		Value: value,
 		Symbol: symbol,
 	}	
-	db.DB.Create(&vc)
+	db.UseDatabase.Create(&vc)
 }
 
 func FindSymbolByCoinName(name string) string {
 	var symbol string
-	db.DB.Model(&Coin{}).Where("name = ?", name).Pluck("symbol", &symbol)
+	db.UseDatabase.Model(&Coin{}).Where("name = ?", name).Pluck("symbol", &symbol)
 	return symbol
 }

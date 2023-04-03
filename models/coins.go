@@ -1,7 +1,7 @@
 package models
 
 import (
-	"github.com/NathanCavalcanteFerreira/api-rest-genesis/db"
+	"github.com/NathanCavalcanteFerreira/api-rest-genesis/config"
 	"github.com/gofiber/fiber/v2"
 	"gorm.io/gorm"
 )
@@ -14,19 +14,19 @@ type Coin struct {
 
 func PopulateCoinTable(c *fiber.Ctx) error {
     var coins []Coin
-    db.DB.Find(&coins)
+    db.UseDatabase.Find(&coins)
     if len(coins) > 0 {
         return nil
     }
 
     coins = []Coin{
         {Name: "BRL", Symbol: "R$"},
-        {Name: "USD", Symbol: "US$"},
+        {Name: "USD", Symbol: "$"},
         {Name: "BTC", Symbol: "₿"},
         {Name: "EUR", Symbol: "€"},
     }
 
-    if err := db.DB.Create(&coins).Error; err != nil {
+    if err := db.UseDatabase.Create(&coins).Error; err != nil {
         return err
     }
 
