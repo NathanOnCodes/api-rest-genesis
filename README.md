@@ -1,6 +1,6 @@
 # API Rest Genesis
 
-API Rest que realiza conversão de moedas utilizando Go, Fiber, GORM e MySQL.
+API Rest que realiza conversão de moedas utilizando Go, Fiber, GORM, Docker e MySQL.
 
 ## Requisitos
 
