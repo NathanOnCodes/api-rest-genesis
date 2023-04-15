@@ -20,8 +20,3 @@ func PopulateConversion(value float64, symbol string) {
 	db.UseDatabase.Create(&vc)
 }
 
-func FindSymbolByCoinName(name string) string {
-	var symbol string
-	db.UseDatabase.Model(&Coin{}).Where("name = ?", name).Pluck("symbol", &symbol)
-	return symbol
-}

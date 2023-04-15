@@ -21,7 +21,7 @@ func main() {
 		return c.SendString(message)
 	})
 
-	app.Get("/exchange/:amount/:from/:to/:rate", controller.Convert)
+	app.Post("/exchange/:amount/:from/:to/:rate", controller.Convert)
 
 	app.Get("/logs", controller.GetConversions)
 

@@ -32,3 +32,9 @@ func PopulateCoinTable(c *fiber.Ctx) error {
 
     return nil
 }
+
+func FindSymbolByCoinName(name string) (string, error) {
+	var symbol string
+	db.UseDatabase.Model(&Coin{}).Where("name = ?", name).Pluck("symbol", &symbol)
+	return symbol, nil
+}
