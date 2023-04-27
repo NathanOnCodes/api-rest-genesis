@@ -1,8 +1,11 @@
 package db
 
 import (
+	"fmt"
 	"log"
+	"os"
 	"time"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -11,7 +14,7 @@ import (
 var UseDatabase *gorm.DB
 
 func ConnectDB() *gorm.DB {
-	dns := "admin:admin@tcp(api-rest-genesis-database:3306)/mysqldatabase?charset=utf8mb4&parseTime=True&loc=Local"
+	dns := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8mb4&parseTime=True&loc=Local", os.Getenv("USER"), os.Getenv("PASSWORD"), os.Getenv("HOST"), os.Getenv("DB_NAME"))
 	time.Sleep(5 * time.Second)
 	
 	conn, err := gorm.Open(mysql.Open(dns), &gorm.Config{})
